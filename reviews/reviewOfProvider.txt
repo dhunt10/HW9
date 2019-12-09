@@ -1,0 +1,37 @@
+This document serves as a review for our provider's code. It is broken up into three sections:
+
+1. The Good
+	This section identifies the parts of their code that we thought were easy to adapt to our model and controller, good structure of the program overall, and any other good coding practices that we found helpful. 
+
+2. The Bad
+	This section goes over code that made it difficult for us to adapt to our code and methods, or code that was not helpful or did not provide abstract/reusable enough functions.
+
+3. The Confusing
+	This section goes over parts of their code that we were not able to integrate and thus resulting in an implementation that is not fully functioning (specifically wrong location of methods in classes, and tight coupling between the view and the model, and incompatible implementation of views). This is not fully on them, based on our implementation, which may have also been tightly coupled between the controller and the view, there were some features we could not figure out. 
+
+
+
+The Good:
+	- A cell class creation was a good design approach by our providers to represent a cell in their spreadsheet model. Not only did they have useful functions that helped us adapt their class to our Cell class, they also included good documentation that allowed us to almost perfectly match their functions with ours. 
+
+	-  We really appreciated the aesthetic implementation of their view, we thought that the JTable looked really good and provided easy built in implementation for highlighting cells from JTable. In addition, the panels used as headers was a great way to differentiate between regular cells and headers.
+
+	- The provider's code had very useful methods, which were fully functioning, for their model and their views. We did not have to crate any functions for model and view functionality and that made adaptation much easier. 
+
+	- For their model, they had a read only version of their model that they used for their view which was something we did not do, and their implementation of this read only class was a great learning tool for us and using it with our controller exemplified its usefulness, so kudos to them. 
+
+
+The Bad:
+	- First thing we noticed was that their headers for the rows were textfields and we were not able to understand how to change their view so that users cannot edit their headers (only for the row headers) without directly editing their code.
+
+	- There was no controller interface given to us, as they said they only had a class, so we had to create a new controller from scratch without any guidance on how to implement their view and model methods into our controller.
+
+	- Not relevant to the functionality of their code, but many of their functions had names that were not intuitive, and many of their variable names were not stylistically correct or again were not helpful in understanding their role. Luckily their javadoc for the most part was helpful in these cases.
+
+
+The Confusing:
+	- We had most of the functionality working however, they had one actionlistener for both buttons, and we assumed its because they used runnables. there was no documentation of how/where they implemented runnables for their buttons so it was hard to implement both buttons with only one action listener. We chose to make the "Okay" button work as that was more integral to the functionality of the spreadsheet in this case. This seems like to be an issue of their controller being too coupled to their model (we are assuming these runnables were defined here as we could not find them anywhere else). 
+
+	-They had many of their parts in their view movable (the toolbar up top can come out of the view, and the columns can be rearranged). We are not sure if this was intentional but it seems to hinder the functionality of the spreadsheet in a visual sense.
+
+
