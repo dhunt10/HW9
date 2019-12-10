@@ -5,6 +5,7 @@ import edu.cs3500.spreadsheets.model.Coord;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Map;
+import javax.swing.JFrame;
 
 /**
  * View rendered in text form.
@@ -68,6 +69,11 @@ public class TextView implements IView {
   public void newState(Map<Coord, Cell> newSheet) {
     throw new UnsupportedOperationException(
         "No new view");
+  }
+
+  @Override
+  public JFrame getFrame() {
+    return null;
   }
 
 

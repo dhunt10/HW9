@@ -3,6 +3,7 @@ package edu.cs3500.spreadsheets.view;
 import edu.cs3500.spreadsheets.model.Cell;
 import edu.cs3500.spreadsheets.model.Coord;
 import java.util.Map;
+import javax.swing.JFrame;
 
 /**
  * View.
@@ -38,4 +39,9 @@ public interface IView {
    * @param newSheet the sheet to go off of in map form.
    */
   void newState(Map<Coord, Cell> newSheet);
+
+  /**
+   *
+   */
+  JFrame getFrame();
 }

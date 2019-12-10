@@ -6,6 +6,7 @@ import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.view.GridPanel;
 import edu.cs3500.spreadsheets.view.IView;
 import java.util.Map;
+import javax.swing.JFrame;
 
 /**
  * Adapts the provider's view to our IView.
@@ -48,5 +49,10 @@ public class ViewAdapter implements IView {
   @Override
   public void newState(Map<Coord, Cell> newSheet) {
     //not needed
+  }
+
+  @Override
+  public JFrame getFrame() {
+    return null;
   }
 }

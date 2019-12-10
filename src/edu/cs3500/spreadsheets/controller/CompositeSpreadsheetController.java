@@ -15,11 +15,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import javax.swing.plaf.synth.SynthUI;
 
 /**
  * Controller for communicating between view and model.
@@ -40,6 +43,8 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
   private Coord highLight = null;
   private JButton newSpreadsheet;
   private int numberSpreadsheet = 1;
+  private final Map<Integer, Spreadsheet> currSpreadSheetMap = new HashMap<>();
+  private int viewShowSpreadSheet = 1;
 
   /**
    * Constructor.
@@ -52,7 +57,8 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
    * @param cancel the cancel button so we can have action listeners for it.
    */
   public CompositeSpreadsheetController(Spreadsheet model, int maxCols, int maxRows,
-      JTextField textfield, JButton accept, IView view, JButton cancel, JButton newSpreadsheet) {
+      JTextField textfield, JButton accept, IView view, JButton cancel, JButton newSpreadsheet,
+      JButton left, JButton right) {
     this.model = model;
     this.view = view;
     this.maxCols = maxCols;
@@ -60,6 +66,7 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
     this.textField = textfield;
     this.accept = accept;
     this.newSpreadsheet = newSpreadsheet;
+    this.currSpreadSheetMap.put(this.numberSpreadsheet, model);
     accept.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -72,7 +79,6 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
       @Override
       public void actionPerformed(ActionEvent e) {
         cancelActionPerformed(e);
-        //newSpreadsheetPerformed(e);
       }
     });
 
@@ -80,6 +86,20 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
       @Override
       public void actionPerformed(ActionEvent e) {
         newSpreadsheetPerformed(e);
+      }
+    });
+
+    left.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        moveLeft(e);
+      }
+    });
+
+    right.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        moveRight(e);
       }
     });
   }
@@ -128,7 +148,7 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
           test.setBackground(Color.PINK);
           StringBuilder sb = new StringBuilder();
           sb.append(Coord.colIndexToName(x)).append(y);
-          this.textField.setText(model.getCellAt(new Coord(x, y)).getRawString());
+          this.textField.setText(currSpreadSheetMap.get(this.viewShowSpreadSheet).getCellAt(new Coord(x, y)).getRawString());
         }
         else {
           this.x = -1;
@@ -171,8 +191,8 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
     StringBuilder sb = new StringBuilder();
     sb.append(Coord.colIndexToName(x)).append(y);
     try {
-      this.updateProgram(sb.toString(), textField.getText(), model);
-      view.newState(model.getCurrSpreadSheet());
+      this.updateProgram(sb.toString(), textField.getText(), currSpreadSheetMap.get(this.viewShowSpreadSheet));
+      view.newState(currSpreadSheetMap.get(this.viewShowSpreadSheet).getCurrSpreadSheet());
       new Coord(this.x, this.y);
     }
     catch (ArrayIndexOutOfBoundsException r) {
@@ -194,7 +214,7 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
    */
   public void cancelActionPerformed(ActionEvent e) {
     try {
-      String contents = model.getCellAt(new Coord(x, y)).getRawString();
+      String contents = currSpreadSheetMap.get(this.viewShowSpreadSheet).getCellAt(new Coord(x,y)).getRawString();
       textField.setText(contents);
     }
     catch (IllegalArgumentException e1) {
@@ -215,10 +235,12 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
 
 
   public void newSpreadsheetPerformed(ActionEvent e) {
-    this.numberSpreadsheet =+ 1;
+    this.numberSpreadsheet = this.numberSpreadsheet + 1;
     Builder b = new Builder();
-    IView v = BeyondGood.createView("composite", null, b.createWorksheet(true), 50);
-    v.display();
+    Spreadsheet s = b.createWorksheet(true);
+    this.currSpreadSheetMap.put(this.numberSpreadsheet, s);
+    //IView v = BeyondGood.createView("composite", null, b.createWorksheet(true), 50);
+    //v.display();
   }
 
   @Override
@@ -234,5 +256,31 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
   @Override
   public void actionPerformed(ActionEvent e) {
     //not necessary
+  }
+
+  public void moveLeft(ActionEvent e) {
+    try {
+
+      view.newState(this.currSpreadSheetMap.get(this.viewShowSpreadSheet - 1).getCurrSpreadSheet());
+      this.viewShowSpreadSheet = this.viewShowSpreadSheet - 1;
+      this.view.getFrame().setTitle(String.valueOf(this.viewShowSpreadSheet));
+
+    }
+    catch (NullPointerException e1) {
+
+    }
+  }
+
+  public void moveRight(ActionEvent e) {
+    try {
+      view.newState(this.currSpreadSheetMap.get(this.viewShowSpreadSheet + 1).getCurrSpreadSheet());
+      this.viewShowSpreadSheet = this.viewShowSpreadSheet + 1;
+      this.view.getFrame().setTitle(String.valueOf(this.viewShowSpreadSheet));
+
+    }
+    catch (NullPointerException e1) {
+
+    }
+
   }
 }
