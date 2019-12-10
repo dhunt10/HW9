@@ -192,7 +192,7 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
     sb.append(Coord.colIndexToName(x)).append(y);
     try {
       this.updateProgram(sb.toString(), textField.getText(), currSpreadSheetMap.get(this.viewShowSpreadSheet));
-      view.newState(currSpreadSheetMap.get(this.viewShowSpreadSheet).getCurrSpreadSheet());
+      view.newState(this.currSpreadSheetMap.get(this.viewShowSpreadSheet).getCurrSpreadSheet());
       new Coord(this.x, this.y);
     }
     catch (ArrayIndexOutOfBoundsException r) {

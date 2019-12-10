@@ -21,6 +21,7 @@ public class BasicWorksheet implements Spreadsheet {
   private List<Coord> coordList;
   public Spreadsheet spreadsheet;
   private int number = 1;
+  private final Map<Integer, Map<Coord, Cell>> currSpreadSheetMap = new HashMap<>();
 
   /**
    * This build the worksheet with given list of cells.
@@ -33,7 +34,9 @@ public class BasicWorksheet implements Spreadsheet {
     this.coordList = coordList;
     fillBlank();
     getEvaluatedCells();
-    this.number =+ newCells;
+    this.number = this.number + newCells;
+    this.currSpreadSheetMap.put(this.number, currSpreadSheet);
+    System.out.println(newCells);
   }
 
   /**
