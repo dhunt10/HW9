@@ -20,6 +20,7 @@ public class BasicWorksheet implements Spreadsheet {
   private final Map<Coord, Cell> currSpreadSheet;
   private List<Coord> coordList;
   public Spreadsheet spreadsheet;
+  private int number = 1;
 
   /**
    * This build the worksheet with given list of cells.
@@ -27,11 +28,12 @@ public class BasicWorksheet implements Spreadsheet {
    * @param currSpreadSheet array list of array list holding the cells.
    * @param coordList list of all the cells filled.
    */
-  public BasicWorksheet(Map<Coord, Cell> currSpreadSheet, List<Coord> coordList) {
+  public BasicWorksheet(Map<Coord, Cell> currSpreadSheet, List<Coord> coordList, int newCells) {
     this.currSpreadSheet = currSpreadSheet;
     this.coordList = coordList;
     fillBlank();
     getEvaluatedCells();
+    this.number =+ newCells;
   }
 
   /**
@@ -115,7 +117,7 @@ public class BasicWorksheet implements Spreadsheet {
    * @param coord coordinate for new blank cell.
    */
   public void blankCell(Coord coord) {
-    Cell cell = new Cell(coord);
+    Cell cell = new Cell(coord, this.number);
     currSpreadSheet.put(coord, cell);
     coordList.add(coord);
   }
@@ -239,7 +241,7 @@ public class BasicWorksheet implements Spreadsheet {
       }
       Formula formula = sexp.accept(new SexpToFormula());
 
-      Cell cell = new Cell(coord, formula, contents);
+      Cell cell = new Cell(coord, formula, contents, 1);
       currSpreadSheet.put(coord, cell);
       coordList.add(coord);
       return this;
@@ -260,8 +262,13 @@ public class BasicWorksheet implements Spreadsheet {
      * @return BasicWorksheet
      */
     @Override
-    public BasicWorksheet createWorksheet() {
-      return new BasicWorksheet(currSpreadSheet, coordList);
+    public BasicWorksheet createWorksheet(boolean newCells) {
+      if (newCells) {
+        return new BasicWorksheet(currSpreadSheet, coordList, 1);
+      } else {
+        return new BasicWorksheet(currSpreadSheet, coordList, 0);
+      }
+
     }
 
   }

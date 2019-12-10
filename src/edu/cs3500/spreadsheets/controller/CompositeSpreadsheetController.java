@@ -1,6 +1,7 @@
 package edu.cs3500.spreadsheets.controller;
 
 import edu.cs3500.spreadsheets.BeyondGood;
+import edu.cs3500.spreadsheets.model.BasicWorksheet.Builder;
 import edu.cs3500.spreadsheets.model.Cell;
 import edu.cs3500.spreadsheets.model.Coord;
 import edu.cs3500.spreadsheets.model.Spreadsheet;
@@ -37,6 +38,8 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
   private JButton cancel;
   private boolean high = false;
   private Coord highLight = null;
+  private JButton newSpreadsheet;
+  private int numberSpreadsheet = 1;
 
   /**
    * Constructor.
@@ -49,13 +52,14 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
    * @param cancel the cancel button so we can have action listeners for it.
    */
   public CompositeSpreadsheetController(Spreadsheet model, int maxCols, int maxRows,
-      JTextField textfield, JButton accept, IView view, JButton cancel) {
+      JTextField textfield, JButton accept, IView view, JButton cancel, JButton newSpreadsheet) {
     this.model = model;
     this.view = view;
     this.maxCols = maxCols;
     this.maxRows = maxRows;
     this.textField = textfield;
     this.accept = accept;
+    this.newSpreadsheet = newSpreadsheet;
     accept.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -68,6 +72,14 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
       @Override
       public void actionPerformed(ActionEvent e) {
         cancelActionPerformed(e);
+        //newSpreadsheetPerformed(e);
+      }
+    });
+
+    newSpreadsheet.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        newSpreadsheetPerformed(e);
       }
     });
   }
@@ -164,7 +176,7 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
       new Coord(this.x, this.y);
     }
     catch (ArrayIndexOutOfBoundsException r) {
-      System.out.println("No Cell Selected");
+      System.out.println("No Cell Selected COMB");
     }
     catch (IllegalArgumentException f) {
       System.out.println("No Cell Selected");
@@ -186,7 +198,7 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
       textField.setText(contents);
     }
     catch (IllegalArgumentException e1) {
-      System.out.println("No cell selected");
+      System.out.println("Cancel can only be used when a cell is selected");
     }
 
   }
@@ -199,6 +211,14 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
    */
   public void updateProgram(String coordinate, String inString, Spreadsheet s) {
     BeyondGood.updateCurrentView(coordinate, inString, s);
+  }
+
+
+  public void newSpreadsheetPerformed(ActionEvent e) {
+    this.numberSpreadsheet =+ 1;
+    Builder b = new Builder();
+    IView v = BeyondGood.createView("composite", null, b.createWorksheet(true), 50);
+    v.display();
   }
 
   @Override

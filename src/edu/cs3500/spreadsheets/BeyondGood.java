@@ -35,8 +35,6 @@ public class BeyondGood {
     //File infile = null;
     //File outfile = new File("/Users/darinhunt/Desktop/OOD/HW7/test/testTRI_results.txt");
     //File infile = null;
-
-
     File outfile = null;
     String incell = null;
     int size = 51;
@@ -114,7 +112,7 @@ public class BeyondGood {
 
     if (file == null && type.equals("graphic") || file == null && type.equals("composite")
         || file == null && type.equals("provider")) {
-      IView v = createView(type, saveTo, b.createWorksheet(), size);
+      IView v = createView(type, saveTo, b.createWorksheet(false), size);
       v.display();
     }
 
@@ -140,7 +138,7 @@ public class BeyondGood {
       FileReader fileReader = new FileReader(file);
       Spreadsheet s = WorksheetReader.read(BasicWorksheet.defaultBuilder(), fileReader);
 
-      b.createWorksheet();
+      b.createWorksheet(false);
 
       IView v = createView(type, saveTo, s, size);
       v.display();

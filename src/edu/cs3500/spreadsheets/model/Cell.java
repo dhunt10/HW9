@@ -20,6 +20,7 @@ public class Cell {
   private Coord coord;
   private Value evaluatedData;
   private String cellValueString;
+  private final int sNumber;
 
   /**
    * Construtor for a cell that will have contents.
@@ -27,21 +28,23 @@ public class Cell {
    * @param contents content of the cell, not yet evaluated.
    * @param cellValueString raw string value to be placed in cell.
    */
-  public Cell(Coord coords, Formula contents, String cellValueString) {
+  public Cell(Coord coords, Formula contents, String cellValueString, int sNumber) {
     this.coord = coords;
     this.contents = contents;
     this.cellValueString = cellValueString;
+    this.sNumber = sNumber;
   }
 
   /**
    * Construtor for a cell that will be blank.
    * @param coord the coordinates of the cell in currSpreadSheet.
    */
-  public Cell(Coord coord) {
+  public Cell(Coord coord, int sNumber) {
     this.coord = coord;
     this.contents = new StringValue("");
     this.evaluatedData = new StringValue("");
     this.cellValueString = "";
+    this.sNumber = sNumber;
   }
 
 

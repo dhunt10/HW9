@@ -28,6 +28,7 @@ public class CompositeFrame extends JFrame {
   private JTextField rawContents;
   private JButton confirm;
   private JButton cancel;
+  private JButton newSpreadSheet;
   private Spreadsheet model;
   private IView view;
 
@@ -74,6 +75,14 @@ public class CompositeFrame extends JFrame {
     c.ipady = 30;
     editOptions.add(confirm,c);
 
+    newSpreadSheet = new JButton("+");
+    newSpreadSheet.setPreferredSize(new Dimension(10, 30));
+    c.gridx = 0;
+    c.gridy = 0;
+    c.ipadx = 10;
+    c.ipady = 30;
+    editOptions.add(newSpreadSheet, c);
+
 
     //textfield
     rawContents = new JTextField();
@@ -93,7 +102,7 @@ public class CompositeFrame extends JFrame {
     this.add(scrollBar, BorderLayout.CENTER);
 
     this.gridPanel.addMouseListener(new CompositeSpreadsheetController(
-        model, width, height, rawContents, confirm, this.view, cancel));
+        model, width, height, rawContents, confirm, this.view, cancel, newSpreadSheet));
 
     this.pack();
     this.setSize(800, 500);

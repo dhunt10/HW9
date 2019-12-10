@@ -57,7 +57,7 @@ public class ViewModelImpl implements ViewModel {
     Iterator mapIterator = map.entrySet().iterator();
     while (mapIterator.hasNext()) {
       Map.Entry mapElement = (Map.Entry)mapIterator.next();
-      Cell bc = new edu.cs3500.spreadsheets.model.Cell((Coord) mapElement.getValue());
+      Cell bc = new edu.cs3500.spreadsheets.model.Cell((Coord) mapElement.getValue(), 0);
       adaptee.put((Coord) mapElement.getKey(), bc);
     }
 

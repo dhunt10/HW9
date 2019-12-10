@@ -54,7 +54,7 @@ public class GridPanel extends JPanel {
     for (int i = 0; i < col; i++) {
       for (int j = 0; j < row; j++) {
         JLabel field = new JLabel("     ");
-        Cell template = new Cell(new Coord(i + 1, j + 1));
+        Cell template = new Cell(new Coord(i + 1, j + 1), 0);
         cellsOnScreen.add(template);
         JPanel cell = template.drawSelf();
         cell.add(field);

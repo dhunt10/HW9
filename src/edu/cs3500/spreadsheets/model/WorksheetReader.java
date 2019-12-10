@@ -31,7 +31,7 @@ public final class WorksheetReader {
      * Finalizes the construction of the worksheet and returns it.
      * @return the fully-filled-in worksheet
      */
-    T createWorksheet();
+    T createWorksheet(boolean inCells);
   }
 
   /**
@@ -83,6 +83,6 @@ public final class WorksheetReader {
       builder = builder.createCell(col, row, contents);
     }
 
-    return builder.createWorksheet();
+    return builder.createWorksheet(false);
   }
 }
