@@ -141,6 +141,7 @@ public class BeyondGood {
       b.createWorksheet(false);
 
       IView v = createView(type, saveTo, s, size);
+      v.getFrame().setTitle(1 + " of " + 1);
       v.display();
     }
 

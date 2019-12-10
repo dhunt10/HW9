@@ -239,6 +239,7 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
     Builder b = new Builder();
     Spreadsheet s = b.createWorksheet(true);
     this.currSpreadSheetMap.put(this.numberSpreadsheet, s);
+    this.view.getFrame().setTitle(this.viewShowSpreadSheet + " of " + this.numberSpreadsheet);
     //IView v = BeyondGood.createView("composite", null, b.createWorksheet(true), 50);
     //v.display();
   }
@@ -263,7 +264,10 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
 
       view.newState(this.currSpreadSheetMap.get(this.viewShowSpreadSheet - 1).getCurrSpreadSheet());
       this.viewShowSpreadSheet = this.viewShowSpreadSheet - 1;
-      this.view.getFrame().setTitle(String.valueOf(this.viewShowSpreadSheet));
+      this.view.getFrame().setTitle(this.viewShowSpreadSheet + " of " + this.numberSpreadsheet);
+      textField.setText("");
+      this.x = -1;
+      this.y = -1;
 
     }
     catch (NullPointerException e1) {
@@ -275,8 +279,10 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
     try {
       view.newState(this.currSpreadSheetMap.get(this.viewShowSpreadSheet + 1).getCurrSpreadSheet());
       this.viewShowSpreadSheet = this.viewShowSpreadSheet + 1;
-      this.view.getFrame().setTitle(String.valueOf(this.viewShowSpreadSheet));
-
+      this.view.getFrame().setTitle(this.viewShowSpreadSheet + " of " + this.numberSpreadsheet);
+      textField.setText("");
+      this.x = -1;
+      this.y = -1;
     }
     catch (NullPointerException e1) {
 
