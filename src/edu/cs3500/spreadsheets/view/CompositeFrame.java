@@ -54,23 +54,6 @@ public class CompositeFrame extends JFrame {
 
 
     //add buttons to the frame
-    cancel = new JButton("Cancel");
-    cancel.setSize(50,50);
-    c.gridx = 0;
-    c.gridy = 0;
-    c.ipadx = 10;
-    c.ipady = 30;
-
-    editOptions.add(cancel, c);
-
-    confirm = new JButton("Confirm");
-    confirm.setPreferredSize(new Dimension(10, 30));
-    c.gridx = 0;
-    c.gridy = 0;
-    c.ipadx = 10;
-    c.ipady = 30;
-    editOptions.add(confirm,c);
-
     newSpreadSheet = new JButton("+");
     newSpreadSheet.setPreferredSize(new Dimension(10, 30));
     c.gridx = 0;
@@ -94,6 +77,23 @@ public class CompositeFrame extends JFrame {
     c.ipadx = 10;
     c.ipady = 30;
     editOptions.add(rightArrow, c);
+
+    cancel = new JButton("Cancel");
+    cancel.setSize(50,50);
+    c.gridx = 0;
+    c.gridy = 0;
+    c.ipadx = 10;
+    c.ipady = 30;
+
+    editOptions.add(cancel, c);
+
+    confirm = new JButton("Confirm");
+    confirm.setPreferredSize(new Dimension(10, 30));
+    c.gridx = 0;
+    c.gridy = 0;
+    c.ipadx = 10;
+    c.ipady = 30;
+    editOptions.add(confirm,c);
 
 
     //textfield

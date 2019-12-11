@@ -238,8 +238,8 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
     Spreadsheet s = b.createWorksheet(true);
     this.currSpreadSheetMap.put(this.numberSpreadsheet, s);
     this.view.getFrame().setTitle(this.viewShowSpreadSheet + " of " + this.numberSpreadsheet);
-    //IView v = BeyondGood.createView("composite", null, b.createWorksheet(true), 50);
-    //v.display();
+    IView v = BeyondGood.createView("composite", null, b.createWorksheet(true), 50);
+    v.display();
   }
 
   @Override
