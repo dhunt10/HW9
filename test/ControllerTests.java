@@ -1,4 +1,4 @@
-import static junit.framework.TestCase.assertEquals;
+/*import static junit.framework.TestCase.assertEquals;
 
 import edu.cs3500.spreadsheets.controller.CompositeSpreadsheetController;
 import edu.cs3500.spreadsheets.model.BasicWorksheet;
@@ -18,7 +18,7 @@ import org.junit.Test;
 /**
  * Tests the controller and the dependencies of the controller like the listeners.
  */
-public class ControllerTests {
+/*public class ControllerTests {
 
 
   @Test
@@ -96,4 +96,4 @@ public class ControllerTests {
 
     assertEquals(text.getText(), "10");
   }
-}
+}*/

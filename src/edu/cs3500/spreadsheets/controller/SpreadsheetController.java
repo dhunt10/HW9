@@ -1,6 +1,8 @@
 package edu.cs3500.spreadsheets.controller;
 
 import edu.cs3500.spreadsheets.model.Spreadsheet;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Controller responsible for communicating between view and model.
@@ -26,4 +28,10 @@ public interface SpreadsheetController {
    * @param y the manually set y.
    */
   void setY(int y);
+
+  /**
+   * returns curr. spreadsheet map.
+   * @return map of spreadsheets.
+   */
+  Map<Integer, Spreadsheet> getMap();
 }

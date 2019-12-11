@@ -294,4 +294,9 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
       //let it go
     }
   }
+
+  @Override
+  public Map<Integer, Spreadsheet> getMap() {
+    return this.currSpreadSheetMap;
+  }
 }
