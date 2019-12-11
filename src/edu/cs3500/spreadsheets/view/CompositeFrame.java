@@ -120,7 +120,8 @@ public class CompositeFrame extends JFrame {
     this.add(scrollBar, BorderLayout.CENTER);
 
     this.gridPanel.addMouseListener(new CompositeSpreadsheetController(
-        model, width, height, rawContents, confirm, this.view, cancel, newSpreadSheet, leftArrow, rightArrow));
+        model, width, height, rawContents, confirm, this.view, cancel, newSpreadSheet,
+        leftArrow, rightArrow));
 
     this.pack();
     this.setSize(800, 500);

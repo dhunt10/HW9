@@ -271,7 +271,7 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
 
     }
     catch (NullPointerException e1) {
-
+      //let it go
     }
   }
 
@@ -285,8 +285,7 @@ public class CompositeSpreadsheetController implements SpreadsheetController,
       this.y = -1;
     }
     catch (NullPointerException e1) {
-
+      //let it go
     }
-
   }
 }

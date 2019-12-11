@@ -33,7 +33,6 @@ public class CompositeView implements IView {
     this.width = width;
     this.height = height;
     this.frame = new CompositeFrame(sheet, width, height, model, this);
-    //this.cells = frame.getGridPanel();
   }
 
   @Override
