@@ -33,26 +33,28 @@ public class Reference implements Formula {
     this.references = references;
     String[] splitter = references.split(":");
 
-    if (splitter.length > 1) {
-      refs = referenceListMaker(splitter[0], splitter[1]);
-    } else {
-      refs = referenceListMaker(splitter[0]);
+    if (splitter.length == 2) {
+      //there is a block
+      if (splitter[0].length() == 1) {
+
+      }
+
+      if (splitter[1].length() == 1) {
+
+      }
+
+    }
+    else if (splitter.length == 1) {
+      if (splitter[0].length() == 1) {
+        String value = splitter[0];
+        splitter = new String[2];
+        splitter[0] = value + "1";
+        splitter[1] = value + "50";
+      }
     }
 
-    this.evaluatedRefs = getRefs();
-  }
-
-  /**
-   * Constructor, takes ina  single reference.
-   * @param references single reference to another cell.
-   * @param function the type of function action to be acted on the reference.
-   */
-  public Reference(String references, String function) {
-    this.function = function;
-    this.references = references;
-    String[] splitter = references.split(":");
-
     if (splitter.length > 1) {
+      System.out.println(splitter[0]);
       refs = referenceListMaker(splitter[0], splitter[1]);
     } else {
       refs = referenceListMaker(splitter[0]);
