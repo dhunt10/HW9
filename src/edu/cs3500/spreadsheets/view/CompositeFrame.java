@@ -11,7 +11,6 @@ import java.awt.GridLayout;
 import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -21,13 +20,6 @@ import javax.swing.JTextField;
  */
 public class CompositeFrame extends JFrame {
   private GridPanel gridPanel;
-  private JPanel editOptions;
-  private JTextField rawContents;
-  private JButton confirm;
-  private JButton cancel;
-  private JButton newSpreadSheet;
-  private JButton leftArrow;
-  private JButton rightArrow;
   private IView view;
 
   /**
@@ -42,6 +34,13 @@ public class CompositeFrame extends JFrame {
       int width, int height, Spreadsheet model, IView view) {
 
     super();
+    JPanel editOptions;
+    JTextField rawContents;
+    JButton confirm;
+    JButton cancel;
+    JButton newSpreadSheet;
+    JButton leftArrow;
+    JButton rightArrow;
     this.setPreferredSize(new Dimension(width,  height));
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.view = view;
