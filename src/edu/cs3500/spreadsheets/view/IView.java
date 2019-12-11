@@ -41,7 +41,8 @@ public interface IView {
   void newState(Map<Coord, Cell> newSheet);
 
   /**
-   *
+   * Responsible for getting a frame to add a title to.
+   * @return a frame.
    */
   JFrame getFrame();
 }

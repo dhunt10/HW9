@@ -22,7 +22,6 @@ public class GridPanel extends JPanel {
   private int row;
 
   //add this list so that you will be able to access cells based on coordinates
-  private ArrayList<Cell> cellsOnScreen;
   private Map<Point, Cell> cellScreenLocations;
 
 
@@ -43,6 +42,7 @@ public class GridPanel extends JPanel {
    */
   public void setup() {
     //this.curr = curr;
+    ArrayList<Cell> cellsOnScreen;
     setLayout(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints();
     c.fill = GridBagConstraints.HORIZONTAL;

@@ -20,18 +20,14 @@ import javax.swing.JTextField;
  * Defines a frame in a window.
  */
 public class CompositeFrame extends JFrame {
-  private Map<Coord, Cell> curr;
   private GridPanel gridPanel;
   private JPanel editOptions;
-  private JFrame frame = new JFrame(); //creates frame
-  private JLabel[][] grid; //names the grid of buttons
   private JTextField rawContents;
   private JButton confirm;
   private JButton cancel;
   private JButton newSpreadSheet;
   private JButton leftArrow;
   private JButton rightArrow;
-  private Spreadsheet model;
   private IView view;
 
   /**
@@ -46,7 +42,6 @@ public class CompositeFrame extends JFrame {
       int width, int height, Spreadsheet model, IView view) {
 
     super();
-    this.model = model;
     this.setPreferredSize(new Dimension(width,  height));
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.view = view;

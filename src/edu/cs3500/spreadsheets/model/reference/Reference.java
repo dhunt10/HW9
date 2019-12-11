@@ -33,18 +33,7 @@ public class Reference implements Formula {
     this.references = references;
     String[] splitter = references.split(":");
 
-    if (splitter.length == 2) {
-      //there is a block
-      if (splitter[0].length() == 1) {
-
-      }
-
-      if (splitter[1].length() == 1) {
-
-      }
-
-    }
-    else if (splitter.length == 1) {
+    if (splitter.length == 1) {
       if (splitter[0].length() == 1) {
         String value = splitter[0];
         splitter = new String[2];
