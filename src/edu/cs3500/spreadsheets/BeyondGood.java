@@ -38,7 +38,7 @@ public class BeyondGood {
     File outfile = null;
     String incell = null;
     int size = 51;
-    String view = "composite";
+    String view = null;
     for (int i = 0; i < args.length; i++) {
       switch (args[i]) {
         case ("-size"):
