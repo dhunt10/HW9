@@ -54,7 +54,6 @@ public class Reference implements Formula {
     }
 
     if (splitter.length > 1) {
-      System.out.println(splitter[0]);
       refs = referenceListMaker(splitter[0], splitter[1]);
     } else {
       refs = referenceListMaker(splitter[0]);

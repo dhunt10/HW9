@@ -100,6 +100,9 @@ public class Function implements Formula {
       catch (NumberFormatException e) {
         return new BooleanValue(false);
       }
+      catch (IndexOutOfBoundsException e) {
+        return new BooleanValue(false);
+      }
       return new BooleanValue(ans);
     }
 

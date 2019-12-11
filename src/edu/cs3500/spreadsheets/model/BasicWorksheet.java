@@ -36,7 +36,6 @@ public class BasicWorksheet implements Spreadsheet {
     getEvaluatedCells();
     this.number = this.number + newCells;
     this.currSpreadSheetMap.put(this.number, currSpreadSheet);
-    System.out.println(newCells);
   }
 
   /**
