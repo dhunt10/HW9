@@ -1,6 +1,30 @@
 # HW9
 ### By Darin and Satwik.
 
+### ***Changes Made in HW9***
+#####Extra Credit:
+#######
+HW9 Implemented Features
+
+
+Feature 1: 
+- Column referencing
+ > For column referencing the following files were changed:
+ >> - CompositeSpreadsheetController - Handle new buttons
+ >> - CompositeFrame - create new buttons for view
+ >> - CompositeView - modified the controller it takes in
+ >> - Reference - Changes constructor to check if the size of reference is a single cell or a single letter (indicating a column)
+
+Feature 2: 
+- Multiple Worksheets in a Workbook.
+- You can now press the '+' button and a new worksheet will be added, navigate through them via the arrows.
+ > For adding new tabs the following files were changes: 
+ > - CompositeSpreadsheetController - Handle "+" button to create new shee as well as moving between worksheets
+ > - CompositeFrame - create new buttons for sheet to get multiple worksheets
+
+			
+
+
 ### Spreadsheets
 #####
 Data can be placed into the spreadsheets by loading in a static text file as well as dynamically
