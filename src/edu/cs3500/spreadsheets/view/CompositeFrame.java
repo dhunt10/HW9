@@ -20,7 +20,6 @@ import javax.swing.JTextField;
  */
 public class CompositeFrame extends JFrame {
   private GridPanel gridPanel;
-  private IView view;
 
   /**
    * Constructor to have a composite, dynamic frame.
@@ -41,9 +40,10 @@ public class CompositeFrame extends JFrame {
     JButton newSpreadSheet;
     JButton leftArrow;
     JButton rightArrow;
+    IView iView;
     this.setPreferredSize(new Dimension(width,  height));
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.view = view;
+    iView = view;
 
     this.setLayout(new BorderLayout());
 
@@ -114,7 +114,7 @@ public class CompositeFrame extends JFrame {
     this.add(scrollBar, BorderLayout.CENTER);
 
     this.gridPanel.addMouseListener(new CompositeSpreadsheetController(
-        model, width, height, rawContents, confirm, this.view, cancel, newSpreadSheet,
+        model, width, height, rawContents, confirm, iView, cancel, newSpreadSheet,
         leftArrow, rightArrow));
 
     this.pack();
