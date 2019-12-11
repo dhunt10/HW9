@@ -49,7 +49,7 @@ public class Reference implements Formula {
         String value = splitter[0];
         splitter = new String[2];
         splitter[0] = value + "1";
-        splitter[1] = value + "50";
+        splitter[1] = value + "500";
       }
     }
 
